@@ -1,0 +1,246 @@
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('/fonts/BEBASNEUE-REGULAR.OTF') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --red: #f20d18;
+  --red-dark: #8f080d;
+  --black: #100b0b;
+  --white: #fff8f5;
+  --muted: #e7d9d5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--white);
+  background: var(--black);
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.landing {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 32px 20px 64px;
+}
+
+.background,
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.background {
+  background:
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=2000&q=85")
+    center / cover no-repeat;
+  filter: blur(7px) brightness(0.35);
+  transform: scale(1.06); 
+}
+
+.overlay {
+  z-index: -1;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(181, 28, 28, 0.47), transparent 38%),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.831), rgba(35, 35, 35, 0.89));
+}
+
+.welcome-card {
+  width: min(100%, 760px);
+  padding: clamp(30px, 6vw, 68px);
+  text-align: center;
+  background: linear-gradient(145deg, rgba(21, 21, 21, 0.91), rgba(13, 10, 10, 0.88));
+  border: 4px solid rgba(242, 13, 24, 0.48);
+  border-radius: 30px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 0 38px rgba(242, 13, 24, 0.1);
+  backdrop-filter: blur(12px);
+  animation: appear 700ms ease-out both;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
+.brand-logo {
+  display: block;
+  width: min(100%, 650px);
+  height: auto;
+  margin-bottom: -25px;
+  object-fit: contain;
+}
+
+.subtitle {
+  margin: 12px 0 18px;
+  font-family: 'Bebas Neue';
+  font-size: clamp(3.0rem, 4.4vw, 2.5rem);
+  font-weight: 400;
+}
+
+.subtitle strong {
+  color: var(--red);
+  font-family: 'Bebas Neue';
+  font-weight: 400;
+}
+
+.description {
+  margin-top: -20px;
+  color: var(--muted);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.5rem, 2.8vw, 1.35rem);
+  line-height: 1.6;
+}
+
+.description strong {
+  color: var(--red);
+}
+
+.enter-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-width: 190px;
+  padding: 15px 28px;
+  color: #fff;
+  background: var(--red);
+  border: 2px solid var(--red);
+  border-radius: 5px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.enter-button:hover,
+.enter-button:focus-visible {
+  color: var(--red);
+  background: transparent;
+  box-shadow: 0 0 24px rgba(242, 13, 24, 0.25);
+  transform: translateY(-2px);
+}
+
+.enter-button:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 4px;
+}
+
+.event-details {
+  margin: 30px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+}
+
+.footer-note {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  left: 20px;
+  margin: 0;
+  color: rgba(255, 248, 245, 0.58);
+  font-size: 0.75rem;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Ajustes de legibilidad para pantallas medianas (481px a 864px).
+   Conserva los estilos personalizados del archivo original. */
+@media (min-width: 481px) and (max-width: 864px) {
+  .welcome-card {
+    padding: clamp(28px, 5vw, 48px);
+  }
+
+  .eyebrow {
+    font-size: clamp(1.25rem, 2.6vw, 1.55rem);
+    line-height: 1.25;
+    letter-spacing: 0.12em;
+    max-width: 100%;
+  }
+
+  .subtitle {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(2rem, 5.2vw, 2.8rem);
+    line-height: 1.08;
+    letter-spacing: 0.01em;
+    overflow-wrap: anywhere;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .description {
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    line-height: 1.5;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing {
+    padding: 24px 14px 58px;
+  }
+
+  .welcome-card {
+    padding: 34px 22px;
+  }
+
+  .eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .event-details {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
